@@ -4,7 +4,7 @@ metadata:
   name: mypod3
 spec:
   containers:
-  - name: mypod
+  - name: mypod3
     image: mcr.microsoft.com/oss/nginx/nginx:1.15.5-alpine
     resources:
       requests:
