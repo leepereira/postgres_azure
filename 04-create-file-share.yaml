@@ -1,14 +1,14 @@
-az aks show --resource-group 1-5870b179-playground-sandbox --name leonsaks101 --query nodeResourceGroup -o tsv
+az aks show --resource-group 1-3ad70710-playground-sandbox --name leonsaks101 --query nodeResourceGroup -o tsv
 
-az storage account create -n leonsstorage456 -g 1-5870b179-playground-sandbox -l eastus --sku Standard_LRS
+az storage account create -n leonsstorage457 -g 1-3ad70710-playground-sandbox -l westus --sku Standard_LRS
 
 
-export AZURE_STORAGE_CONNECTION_STRING=$(az storage account show-connection-string -n leonsstorage456 -g 1-5870b179-playground-sandbox -o tsv)
+export AZURE_STORAGE_CONNECTION_STRING=$(az storage account show-connection-string -n leonsstorage457 -g 1-3ad70710-playground-sandbox -o tsv)
 
 az storage share create -n leonsshare01 --connection-string $AZURE_STORAGE_CONNECTION_STRING
 
-STORAGE_KEY=$(az storage account keys list --resource-group 1-5870b179-playground-sandbox --account-name leonsstorage456 --query "[0].value" -o tsv)
+STORAGE_KEY=$(az storage account keys list --resource-group 1-3ad70710-playground-sandbox --account-name leonsstorage457 --query "[0].value" -o tsv)
 
-kubectl create secret generic azure-secret --from-literal=azurestorageaccountname=leonsstorage456 --from-literal=azurestorageaccountkey=$STORAGE_KEY
+kubectl create secret generic azure-secret --from-literal=azurestorageaccountname=leonsstorage457 --from-literal=azurestorageaccountkey=$STORAGE_KEY
 
 
